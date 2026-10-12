@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* ───────────── bundled typefaces (OFL / Bitstream Vera licences) ───────────── */
+@font-face { font-family: "Inter"; src: url(/fonts/inter-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url(/fonts/inter-Italic.woff) format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url(/fonts/inter-Medium.woff) format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Inter"; src: url(/fonts/inter-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Inter"; src: url(/fonts/inter-Bold.woff) format("woff"); font-weight: 700 800; font-display: swap; }
+@font-face { font-family: "Inter Display"; src: url(/fonts/interdisplay-Bold.woff) format("woff"); font-weight: 700 800; font-display: swap; }
+@font-face { font-family: "Lora"; src: url(/fonts/lora-var.woff) format("woff"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url(/fonts/poppins-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url(/fonts/poppins-Medium.woff) format("woff"); font-weight: 500 700; font-display: swap; }
+@font-face { font-family: "DejaVu Sans"; src: url(/fonts/dejavusans.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DejaVu Sans"; src: url(/fonts/dejavusans-bold.woff) format("woff"); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: "DejaVu Sans Mono"; src: url(/fonts/dejavumono.woff) format("woff"); font-weight: 400; font-display: swap; }
+
+@custom-variant dark (&:where([data-theme=harbor], [data-theme=deep], [data-theme=midnight], [data-theme=harbor] *, [data-theme=deep] *, [data-theme=midnight] *));
+
+@theme inline {
+  --color-rail: var(--c-rail);
+  --color-side: var(--c-side);
+  --color-deck: var(--c-deck);
+  --color-raised: var(--c-raised);
+  --color-field: var(--c-field);
+  --color-hover: var(--c-hover);
+  --color-active: var(--c-active);
+  --color-line: var(--c-line);
+  --color-fg: var(--c-fg);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-link: var(--c-link);
+  --color-danger: var(--c-danger);
+  --color-ok: var(--c-ok);
+  --color-warn: var(--c-warn);
+  --color-idle: var(--c-idle);
+  --color-mention: var(--c-mention);
+  --color-flag-yellow: #F5C542;
+  --color-flag-blue: #2F6FD6;
+  --color-flag-red: #D64541;
+  --color-flag-white: #F4F6FA;
+  --color-flag-black: #121721;
+  --font-sans: var(--app-font);
+  --font-display: "Inter Display", var(--app-font);
+  --font-mono: "DejaVu Sans Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius-tile: 14px;
+}
+
+/* ───────────── themes ───────────── */
+:root, [data-theme="harbor"] {
+  --c-rail: #0E1420; --c-side: #141C29; --c-deck: #1A2331; --c-raised: #202A3A; --c-field: #232E3F;
+  --c-hover: rgba(147, 160, 180, 0.08); --c-active: rgba(147, 160, 180, 0.16); --c-line: rgba(147, 160, 180, 0.14);
+  --c-fg: #E4E9F1; --c-muted: #93A0B4; --c-faint: #627086;
+  --c-accent: #F5C542; --c-accent-ink: #1A1405; --c-link: #6EA8F7;
+  --c-danger: #E5534B; --c-ok: #3DBE8B; --c-warn: #F0A43A; --c-idle: #E8B04B;
+  --c-mention: rgba(245, 197, 66, 0.09);
+  --shadow-pop: 0 8px 24px rgba(4, 8, 16, 0.5), 0 0 0 1px rgba(147, 160, 180, 0.12);
+  color-scheme: dark;
+}
+[data-theme="deep"] {
+  --c-rail: #090D15; --c-side: #0F151F; --c-deck: #131A26; --c-raised: #19212F; --c-field: #1B2433;
+}
+[data-theme="midnight"] {
+  --c-rail: #000000; --c-side: #05070B; --c-deck: #000000; --c-raised: #0C1017; --c-field: #10151E;
+  --c-line: rgba(147, 160, 180, 0.12);
+}
+[data-theme="daylight"] {
+  --c-rail: #DCE2EA; --c-side: #EBEFF4; --c-deck: #F7F9FB; --c-raised: #FFFFFF; --c-field: #E6EBF1;
+  --c-hover: rgba(26, 35, 49, 0.06); --c-active: rgba(26, 35, 49, 0.11); --c-line: rgba(26, 35, 49, 0.12);
+  --c-fg: #1A2331; --c-muted: #4F5C70; --c-faint: #7A8699;
+  --c-link: #2563C9; --c-danger: #C93A33; --c-ok: #1E9E6A; --c-warn: #B86E0A; --c-idle: #C98A12;
+  --c-mention: rgba(214, 160, 20, 0.12);
+  --shadow-pop: 0 8px 24px rgba(26, 35, 49, 0.16), 0 0 0 1px rgba(26, 35, 49, 0.1);
+  color-scheme: light;
+}
+[data-contrast="high"] {
+  --c-muted: var(--c-fg); --c-faint: color-mix(in srgb, var(--c-fg) 75%, transparent);
+  --c-line: color-mix(in srgb, var(--c-fg) 35%, transparent);
+}
+
+:root {
+  --app-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --msg-gap: 16px;
+  font-size: var(--font-scale, 16px);
+}
+[data-font="rounded"] { --app-font: "Poppins", ui-rounded, system-ui, sans-serif; }
+[data-font="serif"] { --app-font: "Lora", Georgia, serif; }
+[data-font="mono"] { --app-font: "DejaVu Sans Mono", ui-monospace, monospace; }
+[data-font="readable"] { --app-font: "DejaVu Sans", Verdana, system-ui, sans-serif; }
+
+@layer base {
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--c-deck);
+  color: var(--c-fg);
+  font-family: var(--app-font);
+  font-feature-settings: "cv11", "ss01", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+#root { filter: var(--app-filter, none); }
+::selection { background: color-mix(in srgb, var(--c-accent) 35%, transparent); }
+
+:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; border-radius: 4px; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+}
+
+/* Thin, quiet scrollbars */
+.scroll { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--c-active) transparent; }
+.scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll::-webkit-scrollbar-thumb { background: var(--c-active); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+.scroll-none { scrollbar-width: none; } .scroll-none::-webkit-scrollbar { display: none; }
+
+/* Motion: only in response to actions; respect user + OS preference */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+[data-motion="reduced"] *, [data-motion="reduced"] *::before, [data-motion="reduced"] *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.97) translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-in-left { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes slide-in-right { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes flash { 0%, 100% { background: transparent; } 30% { background: var(--c-mention); } }
+@keyframes ring { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-12deg); } 40% { transform: rotate(10deg); } 60% { transform: rotate(-6deg); } }
+@keyframes typing-dot { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+.anim-pop { animation: pop-in 140ms cubic-bezier(.2,.8,.3,1); }
+.anim-fade { animation: fade-in 120ms ease-out; }
+.anim-flash { animation: flash 1.6s ease-out; }
+.anim-ring { animation: ring 1s ease-in-out infinite; }
+.typing-dot { animation: typing-dot 1.2s infinite; }
+
+/* Server tiles morph from a rounded square to a tighter "pennant" corner when active */
+.tile { border-radius: var(--radius-tile); transition: border-radius 160ms ease, transform 120ms ease; }
+.tile:hover, .tile[data-active="true"] { border-radius: 10px 10px 10px 4px; }
+.tile:active { transform: translateY(1px); }
+
+/* Speaking ring */
+.speaking { box-shadow: 0 0 0 2px var(--c-ok), 0 0 0 4px color-mix(in srgb, var(--c-ok) 30%, transparent); }
+
+/* ───────────── message content (markdown) ───────────── */
+.msg { font-size: 0.9375rem; line-height: 1.375rem; overflow-wrap: anywhere; white-space: pre-wrap; }
+[data-compact="true"] .msg { line-height: 1.3rem; }
+.msg strong { font-weight: 650; }
+.msg a { color: var(--c-link); text-decoration: none; }
+.msg a:hover, [data-underline-links="true"] .msg a { text-decoration: underline; }
+.msg code { font-family: var(--font-mono); font-size: 0.85em; background: var(--c-field); border-radius: 4px; padding: 0.1em 0.35em; }
+.msg pre { white-space: pre; overflow-x: auto; background: var(--c-rail); border: 1px solid var(--c-line); border-radius: 8px; padding: 0.6rem 0.75rem; margin: 0.25rem 0; max-width: 100%; }
+.msg pre code { background: none; padding: 0; font-size: 0.82rem; line-height: 1.35rem; }
+.msg blockquote { border-left: 3px solid var(--c-faint); padding-left: 0.65rem; margin: 0.15rem 0; }
+.msg h1, .msg h2, .msg h3 { font-family: var(--font-display); font-weight: 700; margin: 0.4rem 0 0.15rem; line-height: 1.25; }
+.msg h1 { font-size: 1.45rem; } .msg h2 { font-size: 1.2rem; } .msg h3 { font-size: 1.05rem; }
+.msg ul, .msg ol { margin: 0.1rem 0; padding-left: 1.4rem; white-space: normal; }
+.msg ul { list-style: disc; } .msg ol { list-style: decimal; }
+.msg .spoiler { background: var(--c-faint); color: transparent; border-radius: 4px; padding: 0 2px; cursor: pointer; transition: background 120ms; }
+.msg .spoiler[data-open="true"] { background: var(--c-active); color: inherit; cursor: text; }
+.msg .mention { background: color-mix(in srgb, var(--c-link) 18%, transparent); color: var(--c-link); border-radius: 4px; padding: 0 3px; font-weight: 500; cursor: pointer; }
+.msg .mention:hover { background: color-mix(in srgb, var(--c-link) 32%, transparent); }
+.msg .emoji-only { font-size: 2.6rem; line-height: 3rem; }
+.hl-kw { color: #C792EA; } .hl-str { color: #A5D6A7; } .hl-num { color: #F5C542; } .hl-com { color: var(--c-faint); font-style: italic; }
+[data-theme="daylight"] .hl-kw { color: #7C3AED; } [data-theme="daylight"] .hl-str { color: #15803D; } [data-theme="daylight"] .hl-num { color: #B45309; }
